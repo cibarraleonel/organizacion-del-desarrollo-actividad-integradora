@@ -13,15 +13,15 @@ del curso de Organización del Desarrollo:
 
 ## Actividad
 
-Para la actividad integradora, se piden resolver las issues planteadas en el 
-repositorio original en un fork en una cuenta propia. La solución debe cumplir
-los siguientes puntos
+Para la actividad integradora, se piden **resolver las [issues](https://github.com/Mikroways/organizacion-del-desarrollo-actividad-integradora/issues)
+planteadas en el repositorio original en un fork en una cuenta propia**. La
+solución debe cumplir los siguientes puntos
 
 - El código debe pasar la configuración de eslint sin errores.
 - El código debe pasar los tests escritos.
 - Se deben escribir nuevos casos de prueba para los cambios en el esquema
   planteados, teniendo en cuenta al menos un caso límite para cada columna.
-- Se debe adoptar un esquema de git para resolver las issues. Las ramas
+- Se debe adoptar un esquema de git para resolver las **issues**. Las ramas
   generadas deben quedarse en el repositorio para su posterior validación
 
 ## Requerimientos
