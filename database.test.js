@@ -141,5 +141,39 @@ describe('Test database', () => {
 
       await expect(client.query(query)).rejects.toThrow('null value in column "city"')
     })
+
+    // nuevos casos de prueba.
+    // Se probara si la columna enable queda en false al no darle un valor
+
+    test('Si no se pasa el campo "enabled", queda en false', async () => {
+      await client.query(`
+        INSERT INTO users (email, username, birthdate, city, password)
+        VALUES ('enabled@demo.com', 'enabled_user', '2000-01-01', 'CABA', 'clave123')`)
+
+      const res = await client.query(`
+        SELECT enabled FROM users WHERE email = 'enabled@demo.com'
+      `)
+
+      expect(res.rows[0].enabled).toBe(false)
+    })
+
+    // Se probara si no se inserta password
+    test('No se puede insertar un usuario sin password', async () => {
+      const query = `
+        INSERT INTO users (email, username, birthdate, city)
+        VALUES ('nopass@demo.com', 'nopass_user', '2000-01-01', 'CABA')`
+      await expect(client.query(query)).rejects.toThrow(/password/)
+    })
+
+    // Se creo usario y se espera que actue el default
+    test('Se genera automáticamente el campo "updated_at"', async () => {
+      const res = await client.query(`
+        INSERT INTO users (email, username, birthdate, city, password)
+        VALUES ('auto@demo.com', 'auto_user', '2000-01-01', 'CABA', 'clave123')
+        RETURNING updated_at
+      `)
+
+      expect(new Date(res.rows[0].updated_at)).toBeInstanceOf(Date)
+    })
   })
 })
