@@ -26,9 +26,45 @@ table "users" {
     null = false
     type = character_varying(30)
   }
+
+  # Se realizan cambios en el esquema segun lo indica el issue #2
+
+  column "updated_at" {
+    null = false
+    type = timestamp
+    default = sql("CURRENT_TIMESTAMP")
+  }
+
+  column "first_name" {
+    null = true
+    type = character_varying(50)
+  }
+
+  column "last_name" {
+    null = true
+    type = character_varying(50)
+  }
+
+  column "password" {
+    null = false
+    type = character_varying(100)
+  }
+
+  column "enabled" {
+    null = false
+    type = boolean
+    default = false
+  }
+
+  column "last_access_time" {
+    null = true
+    type = timestamp
+  }
+
   primary_key {
     columns = [column.email]
   }
+
   index "users_username_key" {
     unique  = true
     columns = [column.username]
