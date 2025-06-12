@@ -6,7 +6,7 @@ const {
    * Para una primer etapa, se recomienda importar la propiedad
    * "baseFields" reenombrandola a "expectedFields"
    */
-  baseFields: expectedFields
+  expectedFields
 } = require('./schema_base')
 
 describe('Test database', () => {
