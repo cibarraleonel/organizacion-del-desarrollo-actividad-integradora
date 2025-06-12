@@ -6,8 +6,8 @@ const {
    * Para una primer etapa, se recomienda importar la propiedad
    * "baseFields" reenombrandola a "expectedFields"
    */
-  baseFields: expectedFields,
-} = require('./schema_base');
+  expectedFields
+} = require('./schema_base')
 
 describe('Test database', () => {
   /**
@@ -100,15 +100,9 @@ describe('Test database', () => {
     test('Insert a valid user', async () => {
       let result = await client.query(
         `INSERT INTO
-<<<<<<< HEAD
          users (email, username, birthdate, city, password)
          VALUES ('user@example.com', 'user', '2024-01-02', 'La Plata', 'root')`
       )
-=======
-         users (email, username, birthdate, city)
-         VALUES ('user@example.com', 'user', '2024-01-02', 'La Plata')`,
-      );
->>>>>>> fix/eslint-facebook
 
       expect(result.rowCount).toBe(1);
 
@@ -126,13 +120,8 @@ describe('Test database', () => {
 
     test('Insert a user with an invalid email', async () => {
       const query = `INSERT INTO
-<<<<<<< HEAD
                      users (email, username, birthdate, city, password)
                      VALUES ('user', 'user', '2024-01-02', 'La Plata', 'root123')`
-=======
-                     users (email, username, birthdate, city)
-                     VALUES ('user', 'user', '2024-01-02', 'La Plata')`;
->>>>>>> fix/eslint-facebook
 
       await expect(client.query(query)).rejects.toThrow('users_email_check');
     });
@@ -150,7 +139,6 @@ describe('Test database', () => {
                      users (email, username, birthdate)
                      VALUES ('user@example.com', 'user', '2024-01-02')`;
 
-<<<<<<< HEAD
       await expect(client.query(query)).rejects.toThrow('null value in column "city"')
     })
 
@@ -189,9 +177,3 @@ describe('Test database', () => {
     })
   })
 })
-=======
-      await expect(client.query(query)).rejects.toThrow('null value in column "city"');
-    });
-  });
-});
->>>>>>> fix/eslint-facebook
