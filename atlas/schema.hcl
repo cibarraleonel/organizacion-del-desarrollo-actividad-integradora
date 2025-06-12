@@ -30,8 +30,8 @@ table "users" {
   # Se realizan cambios en el esquema segun lo indica el issue #2
 
   column "updated_at" {
-    null = false
-    type = timestamp
+    null = true
+    type = timestamptz
     default = sql("CURRENT_TIMESTAMP")
   }
 
@@ -58,7 +58,7 @@ table "users" {
 
   column "last_access_time" {
     null = true
-    type = timestamp
+    type = timestamptz
   }
 
   primary_key {
