@@ -2,8 +2,14 @@ env:
   browser: true
   commonjs: true
   es2021: true
-  jest: true # Se agrega soporte para ejecutar pruebas
-extends: standard
+extends: 
+  #- standard
+  - fbjs #se añade conf de facebook
 parserOptions:
   ecmaVersion: latest
-rules: {}
+# agrego regla para cambiar la logitud minima de linea
+rules:
+  max-len:
+    - warn
+    - code: 120
+
